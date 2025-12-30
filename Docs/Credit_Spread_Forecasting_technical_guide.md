@@ -1,7 +1,7 @@
 # Credit Spread Forecasting with LSTM
 ## Champion/Challenger Model Comparison
 
-**Technical Whitepaper** | **Version 2.1** | **December 2025**
+**Technical Guide** | **December 2025**
 
 ---
 
@@ -331,5 +331,6 @@ class DirectionalPenaltyLoss(nn.Module):
 | Lambda | [0.1, 0.3, 0.5, 0.7] | 0.5 | 57.7% |
 
 **Note:** Flat hyperparameter response indicates robust architecture.
+
 
 ---
