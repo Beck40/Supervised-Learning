@@ -1,46 +1,57 @@
-# Supervised Learning Explorations
+# Supervised and Deep Learning
 
-This repository contains a series of technical explorations into Supervised Learning—a subset of machine learning where models are trained on labelled datasets to map input variables to specific outputs for both classification and regression challenges.
+## Overview
+This repository documents my engineering journey in Supervised and Deep Learning.
 
-The focus of this repository is on implementing rigorous statistical frameworks, feature engineering, and high-standard validation techniques required for production-grade predictive modelling.
+It will contain production-ready pipelines for Regression, Classification, and Time-Series Forecasting.
 
-## 📖 Core Definition
-
-Supervised learning involves training an algorithm on a labelled dataset, where each training example is paired with an output label. The model learns to approximate the mapping function:
-
-$$Y = f(X)$$
-
-This allows the model to accurately predict labels for new, unseen data, facilitating data-driven decision-making in complex environments.
-
-## 📂 Repository Structure
-
-To maintain professional engineering standards, this repository is organised as follows:
-
-- **code/**: Contains modular Python scripts and Jupyter Notebooks for data pre-processing, model training, and evaluation.
-- **documentation/**: Technical reports, model cards, and validation summaries detailing the statistical rigour and methodology.
-
-## 📊 Primary Project: UK Road Safety Analysis
-
-This project implements a supervised learning pipeline to predict and classify road safety incidents using the UK Government's official dataset.
-
-### 🏗️ Data Strategy & Validation
-
-To ensure model robustness and prevent overfitting, a strict temporal validation strategy has been implemented:
-
-- **Training & Testing (In-Time):** Data from 2020 – 2024 is used for initial model development, cross-validation, and hyperparameter optimisation.
-- **Out-of-Time (OOT) Validation:** Data from 2025 is reserved as a final hold-out set. This simulates a real-world production environment to test how well the model generalises to future data points (Temporal Stability).
-
-### 🛠️ Key Methodologies
-
-- **Classification & Regression:** Exploring various architectures (e.g., Logistic Regression, Random Forests, XGBoost) to predict incident severity.
-- **Feature Engineering:** Handling geospatial variables, categorical encoding, and time-series components.
-- **Performance Metrics:** Evaluation based on Precision-Recall curves, F1-score (for class imbalance), and Calibration plots.
-
-## 📚 References
-
-- **Dataset Source:** [UK Government: Road Accidents & Safety Data](https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-accidents-safety-data)
-- **Methodology:** Standardised CRISP-DM workflow for supervised machine learning.
+My focus is on Production-Grade Modelling: building systems that handle non-stationary data, enforce strict temporal validation (Out-of-Time testing), and optimise for financial P&L rather than just MSE/Accuracy.
 
 ---
 
-*Note: This repository is intended for technical demonstration and academic exploration. All implementations focus on transparency, interpretability, and statistical rigour.*
+## Project List
+
+| Project                        | Type         | Tech Stack                        | Description |
+|--------------------------------|--------------|-----------------------------------|-------------|
+|**[Credit Spread Forecasting](./code/credit_spread_forecasting.ipynb)**  | 📈 Time-Series | PyTorch (LSTM) Attention Pandas   | A Champion/Challenger framework predicting directional changes in US High Yield spreads. Features a custom Directional Penalty Loss and Attention Mechanism, achieving 57.7% directional accuracy and £230k P&L in backtesting. |
+| **[UK Road Saftey](./code/)**        | 🚦 Classification | LightGBM XGBoost Sklearn         | A severity classification pipeline trained on 1.2M+ government records. Implements strict Temporal Validation (OOT) (training on 2020-2024, testing on 2025) to test stability against regime changes and handles extreme class imbalance. |
+
+---
+
+## Technical Concepts & Mathematical Foundations
+
+### 1. The Core Objective: Function Approximation
+At its most fundamental level, supervised learning is the process of inferring a function from labelled training data. The goal is not to memorise the data, but to approximate the underlying ground truth function:
+
+$$Y = f(X) + \epsilon$$
+
+**💡 The Intuition:**
+- $f(X)$: The hidden pattern we are trying to find (e.g., "How do interest rates affect credit spreads?").
+- $\epsilon$ (Noise): The random chaos in the real world that cannot be predicted.
+
+**The Engineer's Job:** To build a model that captures $f(X)$ without capturing $\epsilon$ (Overfitting).
+
+### 2. Deep Learning vs. Classical ML (Feature Abstraction)
+This repository utilises both classical algorithms (Gradient Boosting) and Deep Neural Networks (LSTMs). The choice depends on the nature of the features.
+
+- **Classical ML (LightGBM/XGBoost):** Best for structured, tabular data where features are distinct (e.g., Road_Type, Speed_Limit). The model learns decision boundaries to slice the data.
+- **Deep Learning (Neural Networks):** Best for unstructured or sequential data (e.g., Time-Series). The network uses hidden layers to perform automatic feature extraction, transforming raw noisy inputs into abstract representations (e.g., converting daily price fluctuations into a market trend signal).
+
+### 3. Generalisation & Temporal Stability
+In academic settings, models are often tested using random splits (K-Fold Cross-Validation). In production engineering, this is dangerous because it ignores Time.
+
+**The Production Standard (Out-of-Time Validation):**
+- Instead of asking "Did the model memorise the past?", we ask "Can the model predict the future?"
+- **In-Time (Training):** The model learns the rules of the world from 2020–2024.
+- **Out-of-Time (Testing):** We test if those rules still apply in 2025.
+
+**Why this matters:** If the distribution of data changes (e.g., a new regulation or market crash), a production model must be robust enough to handle the "Drift."
+
+---
+
+## Repository Structure
+- **code/**: Modular python scripts and jupyter notebooks.
+- **docs/**: Technical whitepapers, backtest results, and architectural diagrams.
+- **data/**: Sample datasets in CSV format.
+
+> **Note:** This repository is intended for technical demonstration. All implementations focus on transparency, interpretability, and statistical rigour.
