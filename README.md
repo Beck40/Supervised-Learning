@@ -13,8 +13,9 @@ My focus is on Production-Grade Modelling: building systems that handle non-stat
 
 | Project                        | Type         | Tech Stack                        | Description |
 |--------------------------------|--------------|-----------------------------------|-------------|
-|**[Credit Spread Forecasting](./code/credit_spread_forecasting.ipynb)**  | 📈 Time-Series | PyTorch (LSTM) Attention Pandas   | A Champion/Challenger framework predicting directional changes in US High Yield spreads. Features a custom Directional Penalty Loss and Attention Mechanism, achieving 57.7% directional accuracy and £230k P&L in backtesting. |
-| **[UK Road Saftey](./code/)**        | 🚦 Classification | LightGBM XGBoost Sklearn         | A severity classification pipeline trained on 1.2M+ government records. Implements strict Temporal Validation (OOT) (training on 2020-2024, testing on 2025) to test stability against regime changes and handles extreme class imbalance. |
+|**[Credit Spread Forecasting](./code/credit_spread_forecasting.ipynb)**  | 📈 Time-Series | PyTorch (LSTM) Attention Pandas   | A Champion/Challenger framework predicting directional changes in US High Yield spreads. Features a custom Directional Penalty Loss and Attention Mechanism, achieving 57.7% directional accuracy and £230k P&L in backtesting |
+| **[UK Road Saftey](./code/)**        | 🚦 Classification | LightGBM XGBoost Sklearn         | A severity classification pipeline trained on 1.2M+ government records. Implements strict Temporal Validation (OOT) (training on 2020-2024, testing on 2025) to test stability against regime changes and handles extreme class imbalance |
+| **[Payment Forecasting](./code/Payment_forecasting.ipynb)**        | 💳 Payments (HTS) | Prophet, Nixtla, Plotly    | A hierarchical (HTS) pipeline forecasting global authorisation volumes. Implements MinTrace reconciliation and a prescriptive optimisation score to identify market share leakage and systemic volume contraction|
 
 ---
 
