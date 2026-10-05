@@ -11,11 +11,11 @@ My focus is on Production-Grade Modelling: building systems that handle non-stat
 
 ## Project List
 
-| Project                        | Type         | Tech Stack                        | Description |
-|--------------------------------|--------------|-----------------------------------|-------------|
-|**[Credit Spread Forecasting](./code/credit_spread_forecasting.ipynb)**  | 📈 Time-Series | PyTorch (LSTM) Attention Pandas   | A Champion/Challenger framework predicting directional changes in US High Yield spreads. Features a custom Directional Penalty Loss and Attention Mechanism, achieving 57.7% directional accuracy and £230k P&L in backtesting |
-| **[UK Road Saftey](./code/)**        | 🚦 Classification | LightGBM XGBoost Sklearn         | A severity classification pipeline trained on 1.2M+ government records. Implements strict Temporal Validation (OOT) (training on 2020-2024, testing on 2025) to test stability against regime changes and handles extreme class imbalance |
-| **[Payment Forecasting](./code/Payment_forecasting.ipynb)**        | 💳 Payments (HTS) | Prophet, Nixtla, Plotly    | A hierarchical (HTS) pipeline forecasting global authorisation volumes. Implements MinTrace reconciliation and a prescriptive optimisation score to identify market share leakage and systemic volume contraction|
+| Project | Type | Tech Stack | Description |
+|---------|------|------------|-------------|
+| **[Credit Spread Forecasting](./credit_spread_forecasting)** | Time series | PyTorch, LSTM, Attention, Pandas | A Champion/Challenger framework predicting directional changes in US High Yield spreads with a custom directional penalty loss and financial backtesting. |
+| **[UK Road Safety](./uk_road_safety)** | Classification | LightGBM, XGBoost, Scikit-learn | A severity classification pipeline trained on UK government road-safety records with out-of-time validation and class-imbalance handling. |
+| **[Payment Forecasting](./payment_forecasting)** | Hierarchical forecasting | Prophet, Nixtla, Plotly | A hierarchical forecasting pipeline for global authorisation volumes using MinTrace reconciliation and payment-channel optimisation analysis. |
 
 ---
 
@@ -26,7 +26,7 @@ At its most fundamental level, supervised learning is the process of inferring a
 
 $$Y = f(X) + \epsilon$$
 
-**💡 The Intuition:**
+**The Intuition:**
 - $f(X)$: The hidden pattern we are trying to find (e.g., "How do interest rates affect credit spreads?").
 - $\epsilon$ (Noise): The random chaos in the real world that cannot be predicted.
 
@@ -51,8 +51,23 @@ In academic settings, models are often tested using random splits (K-Fold Cross-
 ---
 
 ## Repository Structure
-- **code/**: Modular python scripts and jupyter notebooks.
-- **docs/**: Technical whitepapers, backtest results, and architectural diagrams.
-- **data/**: Sample datasets in CSV format.
+
+```text
+├── credit_spread_forecasting/
+│   ├── data/                         # Local market and rate series
+│   ├── docs/                         # Technical guide
+│   ├── notebooks/                    # Forecasting notebook
+│   └── README.md
+├── payment_forecasting/
+│   ├── data/                         # Cashless payments dataset
+│   ├── notebooks/                    # Forecasting notebook
+│   └── README.md
+├── uk_road_safety/
+│   ├── docs/                         # Historical road-safety data guide
+│   ├── notebooks/                    # Classification notebook
+│   └── README.md
+├── LICENSE
+└── README.md
+```
 
 > **Note:** This repository is intended for technical demonstration. All implementations focus on transparency, interpretability, and statistical rigour.
