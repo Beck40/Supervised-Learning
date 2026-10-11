@@ -1,11 +1,11 @@
 # Supervised and Deep Learning
 
 ## Overview
-This repository documents my engineering journey in Supervised and Deep Learning.
+This repository documents my engineering work in Supervised and Deep Learning.
 
-It will contain production-ready pipelines for Regression, Classification, and Time-Series Forecasting.
+It contains notebook-based examples for Regression, Classification, and Time-Series Forecasting.
 
-My focus is on Production-Grade Modelling: building systems that handle non-stationary data, enforce strict temporal validation (Out-of-Time testing), and optimise for financial P&L rather than just MSE/Accuracy.
+The projects focus on modelling practices for non-stationary data, strict temporal validation (Out-of-Time testing), and financial P&L evaluation rather than only MSE or accuracy.
 
 ---
 
@@ -39,14 +39,14 @@ This repository utilises both classical algorithms (Gradient Boosting) and Deep 
 - **Deep Learning (Neural Networks):** Best for unstructured or sequential data (e.g., Time-Series). The network uses hidden layers to perform automatic feature extraction, transforming raw noisy inputs into abstract representations (e.g., converting daily price fluctuations into a market trend signal).
 
 ### 3. Generalisation & Temporal Stability
-In academic settings, models are often tested using random splits (K-Fold Cross-Validation). In production engineering, this is dangerous because it ignores Time.
+In academic settings, models are often tested using random splits (K-Fold Cross-Validation). For time-dependent modelling, this is dangerous because it ignores Time.
 
-**The Production Standard (Out-of-Time Validation):**
+**The Out-of-Time Validation Standard:**
 - Instead of asking "Did the model memorise the past?", we ask "Can the model predict the future?"
 - **In-Time (Training):** The model learns the rules of the world from 2020–2024.
 - **Out-of-Time (Testing):** We test if those rules still apply in 2025.
 
-**Why this matters:** If the distribution of data changes (e.g., a new regulation or market crash), a production model must be robust enough to handle the "Drift."
+**Why this matters:** If the distribution of data changes (e.g., a new regulation or market crash), a model must be robust enough to handle the "Drift."
 
 ---
 

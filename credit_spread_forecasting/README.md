@@ -25,4 +25,4 @@ The notebook loads official and local market data, creates regime-independent fe
 
 Before running the notebook, create `data_paths.txt` in this project directory with the local paths for the Bank of England and FTSE 100 CSV files, plus the FRED and CBOE source URLs. The notebook reads this file from its current working directory.
 
-The technical guide in `docs/` contains the methodology, validation approach, results, and production considerations.
+The technical guide in `docs/` contains the methodology, validation approach, results, and baseline architecture considerations for this proof of concept.
